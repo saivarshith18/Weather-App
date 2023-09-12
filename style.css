@@ -23,7 +23,9 @@ body{
     overflow: hidden;
     transition: 2s ease-in-out;
     animation:pop 2s ease-in-out;
+   
 }
+
 
 #search-div{
     display: flex;
@@ -83,7 +85,7 @@ body{
     align-items: center;
 }
 #hum-wind-div img{
-    height: 40px;
+    height: 20px;
     margin-right: 10px;
 }
 #hum-wind-div p{
@@ -106,4 +108,18 @@ body{
     color: white;
     font-weight: 600;
     font-size: larger;
+}
+.fa-cloud{
+    margin-right: 5px;
+}
+.myname{
+    display: flex;
+    opacity: 0.05;
+    align-items: center;
+    justify-content: center;
+}
+.myname p{
+    color:white;
+    margin-left: 5px;
+    
 }
