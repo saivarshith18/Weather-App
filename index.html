@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     
@@ -39,8 +40,22 @@
                     <p>Wind Speed</p>
                 </div>
             </div>
+            <div class="col">
+                <i class="fa-solid fa-cloud" style="color: #ffffff;"></i>
+                <div>
+                    
+                    <p class="cloud-percentage"></p>
+                    <p>Clouds</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="myname">
+            <i class="fa-regular fa-heart" style="color: #ffffff;"></i>
+            <p>Sai Varshith</p>
         </div>
     </div>
+   
 
     <script>
         const apiurl="https://api.openweathermap.org/data/2.5/weather?units=metric&appid=bb2dafb1f0815cedae698a586d083766&q=";
@@ -50,6 +65,7 @@
         const searchbtn=document.querySelector("#search-div button");
         const weatherIcon=document.querySelector(".image");
         var description=document.querySelector("#desc");
+        var cloudper=document.querySelector(".cloud-percentage");
         async function weatherDetails(city){
             const response = await fetch(apiurl + city);
             var data = await response.json();
@@ -62,6 +78,7 @@
             document.querySelector(".humidity").innerHTML=data.main.humidity+"%";
             document.querySelector(".wind").innerHTML=data.wind.speed + " Km/h";
             description.innerHTML=data.weather[0].description;
+            cloudper.innerHTML=data.clouds.all + "%"
 
             if(data.weather[0].main == "Clouds"){
                 weatherIcon.src = "clouds.png";
