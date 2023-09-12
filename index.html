@@ -18,6 +18,7 @@
         
         <div id="image-div">
             <img src="rain.png" class="image">
+            <p id="desc"></p>
         </div>
         <div id="temp-city-div">
             <h1 class="temp">°C</h1>
@@ -48,17 +49,19 @@
         const searchbox=document.querySelector("#search-div input");
         const searchbtn=document.querySelector("#search-div button");
         const weatherIcon=document.querySelector(".image");
+        var description=document.querySelector("#desc");
         async function weatherDetails(city){
             const response = await fetch(apiurl + city);
             var data = await response.json();
 
             console.log(data);
 
+            
             document.querySelector(".city").innerHTML=data.name;
             document.querySelector(".temp").innerHTML=Math.round(data.main.temp)+ "°C";
             document.querySelector(".humidity").innerHTML=data.main.humidity+"%";
             document.querySelector(".wind").innerHTML=data.wind.speed + " Km/h";
-
+            description.innerHTML=data.weather[0].description;
 
             if(data.weather[0].main == "Clouds"){
                 weatherIcon.src = "clouds.png";
@@ -76,9 +79,7 @@
                 weatherIcon.src = "mist.png";
             }
 
-            if(data.cod == "404"){
-                alert("CITY NOT FOUND");
-            }
+            
         }
         
         searchbtn.addEventListener("click",function(){
